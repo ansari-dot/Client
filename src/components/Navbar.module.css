@@ -1,0 +1,325 @@
+/* Navbar.module.css */
+
+.navbar {
+  background: rgba(12, 60, 120, 0.98); /* Navy blue, nearly solid */
+  border-bottom: none;
+  width: 100%;
+  position: absolute;
+  top: 32px !important;
+  left: 0;
+  z-index: 9999;
+  border-radius: 2rem;
+  overflow: hidden;
+  /* Remove border for a cleaner look */
+}
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+}
+
+.link {
+  color: #1A1A1A;
+  text-decoration: none;
+  margin: 0 12px;
+  transition: color 0.2s;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+.link:hover {
+  color: #123E7C;
+}
+
+.loginBtn {
+  background-color: #123E7C;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  box-shadow: 0 2px 8px rgba(12,60,120,0.10);
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  font-family: inherit;
+  font-weight: 600;
+  padding: 0.5rem 2rem;
+  margin-right: 0.5rem;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.loginBtn:hover {
+  background-color: #0C3C78;
+}
+
+@keyframes rotateBtnImg {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.screeningBtn {
+  background-color: #fff;
+  color: #15487d;
+  border: 2px solid #15487d;
+  border-radius: 30px;
+  box-shadow: 0 2px 8px rgba(123,35,41,0.10);
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  font-family: inherit;
+  font-weight: 600;
+  padding: 0.5rem 2.5rem 0.5rem 2.5rem;
+  margin-left: 0.5rem;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, border-color 0.2s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+.screeningBtn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 48px;
+  height: 48px;
+  background-image: url('../assets/button.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  opacity: 0;
+  z-index: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+.screeningBtn:hover {
+  background-color: #15487d;
+  color: #fff;
+  border-color: #b22234;
+}
+.screeningBtn:hover::before {
+  opacity: 0.18;
+  animation: rotateBtnImg 1.2s linear infinite;
+}
+@keyframes rotateBtnImg {
+  0% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) scale(1) rotate(360deg); }
+}
+
+/* Mobile Slide-in Menu Styles */
+.mobileMenuOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(12, 60, 120, 0.45);
+  z-index: 10000;
+  transition: background 0.3s;
+  display: flex;
+}
+
+.mobileMenuDrawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 82vw;
+  max-width: 340px;
+  background: #0C3C78;
+  box-shadow: 2px 0 24px rgba(12,60,120,0.18);
+  z-index: 10001;
+  display: flex;
+  flex-direction: column;
+  padding: 32px 20px 20px 20px;
+  transform: translateX(-100%);
+  transition: transform 0.38s cubic-bezier(0.4,0,0.2,1);
+}
+
+.mobileMenuDrawer.open {
+  transform: translateX(0);
+}
+
+.mobileMenuHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.mobileMenuLogo {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.mobileMenuCloseBtn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2.2rem;
+  cursor: pointer;
+  padding: 0 4px;
+  transition: color 0.2s;
+}
+.mobileMenuCloseBtn:hover {
+  color: #F1F1F1;
+}
+
+.mobileMenuLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 32px;
+}
+
+.mobileMenuLink {
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 500;
+  text-decoration: none;
+  letter-spacing: 1px;
+  padding: 8px 0;
+  border-radius: 6px;
+  transition: background 0.18s, color 0.18s;
+}
+.mobileMenuLink:hover {
+  background: #123E7C;
+  color: #F1F1F1;
+}
+
+.mobileMenuActions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mobileMenuBtn {
+  width: 100%;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 30px;
+  padding: 12px 0;
+  border: none;
+  background: #801515;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(123,35,41,0.10);
+  transition: background 0.2s, color 0.2s;
+}
+.mobileMenuBtn:hover {
+  background: #8B0000;
+  color: #fff;
+}
+
+.mobileMenuLoginBtn {
+  background: #fff;
+  color: #0C3C78;
+  border: 2px solid #0C3C78;
+}
+.mobileMenuLoginBtn:hover {
+  background: #0C3C78;
+  color: #fff;
+}
+
+/* Hamburger Icon */
+.mobileMenuIconBtn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2.2rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  transition: color 0.2s;
+  z-index: 10002;
+}
+.mobileMenuIconBtn:focus {
+  outline: 2px solid #fff;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .navbar {
+    top: 0 !important;
+    left: 0;
+    border-radius: 0;
+    padding: 0;
+    background: transparent !important;
+    min-height: unset;
+    border: none;
+    box-shadow: none;
+  }
+  .container {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  .navLinks {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+  .link {
+    color: #fff;
+    font-size: 1rem;
+    margin: 12px 0;
+    padding: 8px 0;
+    width: 100%;
+    border-bottom: 1px solid #123E7C22;
+  }
+  .link:last-child {
+    border-bottom: none;
+  }
+  .loginBtn, .screeningBtn {
+    width: 100%;
+    margin: 8px 0 0 0;
+    padding: 0.7rem 0;
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .navbar {
+    top: 16px !important;
+    border-radius: 1.5rem;
+    min-height: 64px;
+  }
+  .container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .link {
+    font-size: 1.05rem;
+    margin: 0 8px;
+  }
+  .loginBtn, .screeningBtn {
+    font-size: 1.05rem;
+    padding: 0.5rem 1.5rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  .navbar {
+    top: 32px !important;
+    border-radius: 2rem;
+    min-height: 72px;
+  }
+  .container {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+  .link {
+    font-size: 1.1rem;
+    margin: 0 12px;
+  }
+  .loginBtn, .screeningBtn {
+    font-size: 1.1rem;
+    padding: 0.5rem 2rem;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobileMenuOverlay, .mobileMenuDrawer, .mobileMenuIconBtn { display: none !important; }
+} 
