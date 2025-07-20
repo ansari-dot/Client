@@ -16,7 +16,7 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.post(`${API_BASE}/user/logout`, {}, { withCredentials: true });
+      await axios.post(`${API_BASE}/api/user/logout`, {}, { withCredentials: true });
     } catch (err) {
       // Ignore errors, just clear local storage
     }
