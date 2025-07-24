@@ -80,15 +80,15 @@ const Navbar = () => {
               <Link to="/" className={styles.link}>
                 Home
               </Link>
-              <a href="#" className={styles.link}>
-                About us
-              </a>
-              <a href="#" className={styles.link}>
+              <Link to="/about" className={styles.link}>
+                About Us
+              </Link>
+              <Link to="/services" className={styles.link}>
                 Services
-              </a>
-              <a href="#" className={styles.link}>
+              </Link>
+              <Link to="/info" className={styles.link}>
                 Info
-              </a>
+              </Link>
             </div>
             <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}>
               {/* Start Screening Button */}
@@ -135,15 +135,15 @@ const Navbar = () => {
                 <Link to="/" className={styles.mobileMenuLink} onClick={() => setIsMenuOpen(false)}>
                   Home
                 </Link>
-                <a href="#" className={styles.mobileMenuLink} onClick={() => setIsMenuOpen(false)}>
-                  About us
-                </a>
-                <a href="#" className={styles.mobileMenuLink} onClick={() => setIsMenuOpen(false)}>
+                <Link to="/about" className={styles.mobileMenuLink} onClick={() => setIsMenuOpen(false)}>
+                  About Us
+                </Link>
+                <Link to="/services" className={styles.mobileMenuLink} onClick={() => setIsMenuOpen(false)}>
                   Services
-                </a>
-                <a href="#" className={styles.mobileMenuLink} onClick={() => setIsMenuOpen(false)}>
+                </Link>
+                <Link to="/info" className={styles.mobileMenuLink} onClick={() => setIsMenuOpen(false)}>
                   Info
-                </a>
+                </Link>
               </div>
               <div className={styles.mobileMenuActions}>
                 <button

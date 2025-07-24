@@ -1,14 +1,20 @@
-
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
 import Index from "./pages/Index";
 import ScreeningWrapper from "./pages/ScreeningWrapper";
 import NotFound from "./pages/NotFound";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+
 import './App.css';
-import React, { useState, useEffect } from 'react';
 import logo from './assets/logo.png';
+
+// Lazy load the optional pages
+const AboutUs = lazy(() => import('./pages/AboutUs'));
+const Services = lazy(() => import('./pages/Services'));
+const Info = lazy(() => import('./pages/Info'));
 
 const queryClient = new QueryClient();
 
@@ -34,7 +40,15 @@ function App() {
         top: 0,
         left: 0
       }}>
-        <img src={logo} alt="Logo" style={{ height: 120, width: 'auto', filter: 'drop-shadow(0 4px 16px rgba(0,0,0,0.08))' }} />
+        <img
+          src={logo}
+          alt="Logo"
+          style={{
+            height: 120,
+            width: 'auto',
+            filter: 'drop-shadow(0 4px 16px rgba(0,0,0,0.08))'
+          }}
+        />
       </div>
     );
   }
@@ -42,14 +56,19 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/screening" element={<ScreeningWrapper />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <Suspense fallback={<div style={{ padding: '2rem', textAlign: 'center' }}>Loading...</div>}>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/screening" element={<ScreeningWrapper />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/about" element={<AboutUs />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/info" element={<Info />} />
+            {/* Catch-all route */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
       </BrowserRouter>
     </QueryClientProvider>
   );
